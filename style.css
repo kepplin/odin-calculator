@@ -8,7 +8,7 @@ html, body{
 }
 .calcBody{
     display: flex;
-    background-color: grey;
+    background-color: rgb(160, 160, 160);
     width: 500px;
     height: 700px;
     border: 2px solid black;
