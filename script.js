@@ -3,8 +3,10 @@ const currentDisplay = document.querySelector('.currentDisplay');
 const inputButton = document.querySelectorAll('.inputButton');
 const divideButton = document.querySelector('.divideButton');
 const equalsButton = document.querySelector('.equalsButton');
-const operatorButton = document.querySelectorAll('[data-operator]')
-const numberButton = document.querySelectorAll('[data-num]')
+const operatorButton = document.querySelectorAll('[data-operator]');
+const numberButton = document.querySelectorAll('[data-num]');
+const clearButton = document.querySelector('.clearButton');
+const deleteButton = document.querySelector('.deleteButton');
 
 let num1 = ""; //does nothing
 let operator = ""; //does nothing
@@ -34,11 +36,21 @@ operatorButton.forEach((btn) => {
 function handleOperator(op){
   operator = op;
   num2 = num1;
-  console.log(num2)
   prevDisplay.textContent = num2 + operator;
   num1 = "";
   currentDisplay.textContent = "";
 }
+
+//Clear button
+clearButton.addEventListener('click', () => {
+  prevDisplay.textContent = '';
+  currentDisplay.textContent = '';
+})
+//Delete button
+deleteButton.addEventListener('click', function(){
+  num1 = num1.slice(0, currentDisplay.textContent.length - 1)
+  currentDisplay.textContent = currentDisplay.textContent.slice(0, currentDisplay.textContent.length - 1)
+})
 
 equalsButton.addEventListener('click', operate);
 
