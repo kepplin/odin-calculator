@@ -108,3 +108,109 @@ function operate() {
     prevDisplay.textContent = "";
     currentDisplay.textContent = num2;
   }
+  //Event listeners for key presses
+  window.addEventListener('keydown', (e) => {
+    if (e.defaultPrevented){
+      return;
+    }
+    switch (e.key){
+      case "7":
+        if (num1.length <= 21){
+          currentDisplay.textContent = currentDisplay.textContent + 7
+          num1 = num1 + 7
+        }
+        break
+      case "8":
+        if (num1.length <= 21){
+          currentDisplay.textContent = currentDisplay.textContent + 8
+          num1 = num1 + 8
+        }
+        break
+      case "9":
+        if (num1.length <= 21){
+          currentDisplay.textContent = currentDisplay.textContent + 9
+          num1 = num1 + 9
+        }
+        break
+      case "4":
+        if (num1.length <= 21){
+          currentDisplay.textContent = currentDisplay.textContent + 4
+          num1 = num1 + 4
+        }
+        break
+      case "5":
+        if (num1.length <= 21){
+          currentDisplay.textContent = currentDisplay.textContent + 5
+          num1 = num1 + 5
+        }
+        break
+      case "6":
+        if (num1.length <= 21){
+          currentDisplay.textContent = currentDisplay.textContent + 6
+          num1 = num1 + 6
+        }
+        break
+      case "1":
+        if (num1.length <= 21){
+          currentDisplay.textContent = currentDisplay.textContent + 1
+          num1 = num1 + 1
+        }
+        break
+      case "2":
+        if (num1.length <= 21){
+          currentDisplay.textContent = currentDisplay.textContent + 2
+          num1 = num1 + 2
+        }
+        break
+      case "3":
+        if (num1.length <= 21){
+          currentDisplay.textContent = currentDisplay.textContent + 3
+          num1 = num1 + 3
+        }
+        break
+      case "0":
+        if (num1.length <= 21){
+          currentDisplay.textContent = currentDisplay.textContent + '0'
+          num1 = num1 + '0'
+        }
+        break
+      case ")":
+        if (num1.length <= 21){
+          currentDisplay.textContent = currentDisplay.textContent + '00'
+          num1 = num1 + '00'
+        }
+        break
+      case "Delete":
+        prevDisplay.textContent = '';
+        currentDisplay.textContent = '';
+        num1 = '';
+        break
+      case "+":
+        handleOperator('+')
+        break
+      case "-":
+        handleOperator('-')
+        break  
+      case "*":
+        handleOperator('×')
+        break
+      case "/":
+        handleOperator('÷')
+        break
+      case "%":
+        handleOperator('%')
+        break
+      case ".":
+        if (num1.length <= 21){
+          currentDisplay.textContent = currentDisplay.textContent + '.'
+          num1 = num1 + '.'
+        }
+        break  
+      case "Backspace":
+        num1 = num1.slice(0, currentDisplay.textContent.length - 1)
+        currentDisplay.textContent = currentDisplay.textContent.slice(0, currentDisplay.textContent.length - 1)
+        break
+      case "Enter":
+        operate()
+    }
+  }, true)
