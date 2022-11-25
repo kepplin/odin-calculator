@@ -27,11 +27,6 @@ function handleNumber(number){
     num1 += number;
     currentDisplay.textContent = num1;
   }
-  else if (num1){
-    numberButton.addEventListener('click', function(){
-      prevDisplay.textContent = `ANS = ${num1}`
-    })
-  }
 }
 //Previous display
 operatorButton.forEach((btn) => {
@@ -47,27 +42,36 @@ function handleOperator(op){
   currentDisplay.textContent = "";
 }
 //Clear button
-clearButton.addEventListener('click', () => {
+function clearCalc(){
   prevDisplay.textContent = '';
   currentDisplay.textContent = '';
   num1 = '';
-})
+  num2 = '';
+  operator = '';
+}
+clearButton.addEventListener('click', clearCalc)
 //Delete button
-deleteButton.addEventListener('click', function(){
+function deleteCalc(){
   num1 = num1.slice(0, currentDisplay.textContent.length - 1)
   currentDisplay.textContent = currentDisplay.textContent.slice(0, currentDisplay.textContent.length - 1)
-})
+}
+deleteButton.addEventListener('click', deleteCalc)
 //Equals button
-equalsButton.addEventListener('click', () => {
+function equalsCalc(){
   if (num1 != '' && num2 != ''){
     operate()
   }
-});
+}
+equalsButton.addEventListener('click', equalsCalc)
 //Decimal button
-decimalButton.addEventListener('click', function(){
+function decimalCalc(){
+  if (num1.includes('.') == false){
   currentDisplay.textContent = currentDisplay.textContent + '.'
   num1 = num1 + '.'
-})
+  }
+}
+
+decimalButton.addEventListener('click', decimalCalc)
 //Doing the calculation
 function calcPercent(num1, num2){
   return (num2 / 100) * num1
@@ -125,75 +129,40 @@ function operate() {
     }
     switch (e.key){
       case "7":
-        if (num1.length <= 21){
-          currentDisplay.textContent = currentDisplay.textContent + 7
-          num1 = num1 + 7
-        }
+        handleNumber(7)
         break
       case "8":
-        if (num1.length <= 21){
-          currentDisplay.textContent = currentDisplay.textContent + 8
-          num1 = num1 + 8
-        }
+        handleNumber(8)
         break
       case "9":
-        if (num1.length <= 21){
-          currentDisplay.textContent = currentDisplay.textContent + 9
-          num1 = num1 + 9
-        }
+        handleNumber(9)
         break
       case "4":
-        if (num1.length <= 21){
-          currentDisplay.textContent = currentDisplay.textContent + 4
-          num1 = num1 + 4
-        }
+        handleNumber(4)
         break
       case "5":
-        if (num1.length <= 21){
-          currentDisplay.textContent = currentDisplay.textContent + 5
-          num1 = num1 + 5
-        }
+        handleNumber(5)
         break
       case "6":
-        if (num1.length <= 21){
-          currentDisplay.textContent = currentDisplay.textContent + 6
-          num1 = num1 + 6
-        }
+        handleNumber(6)
         break
       case "1":
-        if (num1.length <= 21){
-          currentDisplay.textContent = currentDisplay.textContent + 1
-          num1 = num1 + 1
-        }
+        handleNumber(1)
         break
       case "2":
-        if (num1.length <= 21){
-          currentDisplay.textContent = currentDisplay.textContent + 2
-          num1 = num1 + 2
-        }
+        handleNumber(2)
         break
       case "3":
-        if (num1.length <= 21){
-          currentDisplay.textContent = currentDisplay.textContent + 3
-          num1 = num1 + 3
-        }
+        handleNumber(3)
         break
       case "0":
-        if (num1.length <= 21){
-          currentDisplay.textContent = currentDisplay.textContent + '0'
-          num1 = num1 + '0'
-        }
+        handleNumber(0)
         break
       case ")":
-        if (num1.length <= 21){
-          currentDisplay.textContent = currentDisplay.textContent + '00'
-          num1 = num1 + '00'
-        }
+        handleNumber(00)
         break
       case "Delete":
-        prevDisplay.textContent = '';
-        currentDisplay.textContent = '';
-        num1 = '';
+        clearCalc
         break
       case "+":
         handleOperator('+')
@@ -211,17 +180,14 @@ function operate() {
         handleOperator('%')
         break
       case ".":
-        if (num1.length <= 21){
-          currentDisplay.textContent = currentDisplay.textContent + '.'
-          num1 = num1 + '.'
-        } 
-        // window.removeEventListener('keydown', removeDot);
+        decimalCalc();
+        // window.removeEventListener('keydown', removeDot); FIX ONLY ONE DECIMAL AT A POINT
         break  
       case "Backspace":
-        num1 = num1.slice(0, currentDisplay.textContent.length - 1)
-        currentDisplay.textContent = currentDisplay.textContent.slice(0, currentDisplay.textContent.length - 1)
+        deleteCalc();
         break
       case "Enter":
-        operate()
+        equalsCalc();
+        break
     }
   }, true)
