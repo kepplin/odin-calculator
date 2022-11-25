@@ -7,6 +7,7 @@ const operatorButton = document.querySelectorAll('[data-operator]');
 const numberButton = document.querySelectorAll('[data-num]');
 const clearButton = document.querySelector('.clearButton');
 const deleteButton = document.querySelector('.deleteButton');
+const decimalButton = document.querySelector('.decimalButton')
 
 //Global variables
 let num1 = ""; 
@@ -48,7 +49,7 @@ function handleOperator(op){
 clearButton.addEventListener('click', () => {
   prevDisplay.textContent = '';
   currentDisplay.textContent = '';
-  num1 = ''
+  num1 = '';
 })
 //Delete button
 deleteButton.addEventListener('click', function(){
@@ -57,6 +58,11 @@ deleteButton.addEventListener('click', function(){
 })
 //Equals button
 equalsButton.addEventListener('click', operate);
+//Decimal button
+decimalButton.addEventListener('click', function(){
+  currentDisplay.textContent = currentDisplay.textContent + '.'
+  num1 = num1 + '.'
+})
 //Doing the calculation
 function calcPercent(num1, num2){
   return (num2 / 100) * num1
