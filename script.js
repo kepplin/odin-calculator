@@ -13,6 +13,7 @@ const decimalButton = document.querySelector('.decimalButton')
 let num1 = ""; 
 let operator = "";
 let num2 = "";
+let removeDot;
 
 //Current display
 numberButton.forEach((btn) => {
@@ -105,11 +106,16 @@ function operate() {
         }
         break
     }
+    num2 = roundNum(num2)
     prevDisplay.textContent = "";
     currentDisplay.textContent = num2;
   }
+  //Round Number
+  function roundNum(num){
+    return Math.round(num * 1000000) / 1000000;
+  }
   //Event listeners for key presses
-  window.addEventListener('keydown', (e) => {
+  window.addEventListener('keydown', removeDot = function(e){
     if (e.defaultPrevented){
       return;
     }
@@ -204,7 +210,8 @@ function operate() {
         if (num1.length <= 21){
           currentDisplay.textContent = currentDisplay.textContent + '.'
           num1 = num1 + '.'
-        }
+        } 
+        // window.removeEventListener('keydown', removeDot);
         break  
       case "Backspace":
         num1 = num1.slice(0, currentDisplay.textContent.length - 1)
