@@ -58,7 +58,11 @@ deleteButton.addEventListener('click', function(){
   currentDisplay.textContent = currentDisplay.textContent.slice(0, currentDisplay.textContent.length - 1)
 })
 //Equals button
-equalsButton.addEventListener('click', operate);
+equalsButton.addEventListener('click', () => {
+  if (num1 != '' && num2 != ''){
+    operate()
+  }
+});
 //Decimal button
 decimalButton.addEventListener('click', function(){
   currentDisplay.textContent = currentDisplay.textContent + '.'
