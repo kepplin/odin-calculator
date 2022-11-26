@@ -68,9 +68,8 @@ function decimalCalc(){
   if (num1.includes('.') == false){
   currentDisplay.textContent = currentDisplay.textContent + '.'
   num1 = num1 + '.'
-  }
+    }
 }
-
 decimalButton.addEventListener('click', decimalCalc)
 //Doing the calculation
 function calcPercent(num1, num2){
@@ -124,9 +123,6 @@ function operate() {
   }
   //Event listeners for key presses
   window.addEventListener('keydown', removeDot = function(e){
-    if (e.defaultPrevented){
-      return;
-    }
     switch (e.key){
       case "7":
         handleNumber(7)
@@ -162,7 +158,7 @@ function operate() {
         handleNumber(00)
         break
       case "Delete":
-        clearCalc
+        clearCalc();
         break
       case "+":
         handleOperator('+')
@@ -181,12 +177,12 @@ function operate() {
         break
       case ".":
         decimalCalc();
-        // window.removeEventListener('keydown', removeDot); FIX ONLY ONE DECIMAL AT A POINT
         break  
       case "Backspace":
         deleteCalc();
         break
       case "Enter":
+        e.preventDefault();
         equalsCalc();
         break
     }
