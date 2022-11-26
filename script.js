@@ -33,6 +33,9 @@ operatorButton.forEach((btn) => {
   })
 })
 function handleOperator(op){
+  if (num1 == '' && num2 == ''){
+    num1 = '0';
+  }
   if (num2 === "") {
     num2 = num1;
     operatorCheck(op);
