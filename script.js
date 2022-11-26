@@ -8,13 +8,11 @@ const numberButton = document.querySelectorAll('[data-num]');
 const clearButton = document.querySelector('.clearButton');
 const deleteButton = document.querySelector('.deleteButton');
 const decimalButton = document.querySelector('.decimalButton')
-
 //Global variables
 let num1 = ""; 
 let operator = "";
 let num2 = "";
 let removeDot;
-
 //Current display
 numberButton.forEach((btn) => {
   btn.addEventListener('click', (e) => {
@@ -35,11 +33,23 @@ operatorButton.forEach((btn) => {
   })
 })
 function handleOperator(op){
-  operator = op;
-  num2 = num1;
-  prevDisplay.textContent = num2 + operator;
+  if (num2 === "") {
+    num2 = num1;
+    operatorCheck(op);
+  } else if (num1 === "") {
+    operatorCheck(op);
+  } else {
+    operate();
+    operator = op;
+    currentDisplay.textContent = "0";
+    prevDisplay.textContent = num2 + " " + operator;
+  }
+}
+function operatorCheck(text) {
+  operator = text;
+  prevDisplay.textContent = num2 + " " + operator;
+  currentDisplay.textContent = "0";
   num1 = "";
-  currentDisplay.textContent = "";
 }
 //Clear button
 function clearCalc(){
@@ -116,6 +126,7 @@ function operate() {
     num2 = roundNum(num2)
     prevDisplay.textContent = "";
     currentDisplay.textContent = num2;
+    num1 = '';
   }
   //Round Number
   function roundNum(num){
