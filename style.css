@@ -45,6 +45,7 @@ html, body{
     margin-right: 25px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
+    margin-bottom: 20px;
 }
 .currentDisplay{
     display: flex;
@@ -56,6 +57,7 @@ html, body{
     margin-right: 25px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 30px;
+    margin-bottom: 20px;
 }
 .buttonsBody{
     display: flex;
