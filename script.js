@@ -24,7 +24,7 @@ function handleNumber(number){
   if (num1.length <= 21){
     num1 += number;
     currentDisplay.textContent = num1;
-  }
+  } 
 }
 //Previous display
 operatorButton.forEach((btn) => {
@@ -34,9 +34,12 @@ operatorButton.forEach((btn) => {
 })
 function handleOperator(op){
   if (num1 == '' && num2 == ''){
-    num1 = '0';
-  }
-  if (num2 === "") {
+    num1 = '';
+  } 
+  else if (operator == '' && num2 !== ''){
+    num2 = ''
+  }  
+  else if (num2 === "") {
     num2 = num1;
     operatorCheck(op);
   } else if (num1 === "") {
