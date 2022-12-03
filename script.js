@@ -21,7 +21,6 @@ numberButton.forEach((btn) => {
 })
 
 function handleNumber(number) {
-  console.log('handleNumber', num1, operator, num2, '->', number)
   if (num1.length <= 21) {
     num1 += number;
     currentDisplay.textContent = num1;
@@ -29,7 +28,6 @@ function handleNumber(number) {
   if (operator === '=') {
     num2 = ''
   }
-  console.log('handleNumber END', num1, operator, num2)
 }
 //Previous display
 operatorButton.forEach((btn) => {
@@ -39,7 +37,6 @@ operatorButton.forEach((btn) => {
 })
 
 function handleOperator(op) {
-  console.log('handleOperator', num1, operator, num2, '->', op)
   if (num1 == '' && num2 == '') {
     num1 = '';
   } else if (operator == '' && num2 !== '') {
@@ -55,7 +52,6 @@ function handleOperator(op) {
     currentDisplay.textContent = "0";
     prevDisplay.textContent = num2 + " " + operator;
   }
-  console.log('handleOperator END', num1, operator, num2)
 }
 
 function operatorCheck(text) {
@@ -83,7 +79,6 @@ deleteButton.addEventListener('click', deleteCalc)
 function equalsCalc() {
   if (num1 != '' && num2 != '') {
     operate()
-    console.log('equalsCalc END', num1, operator, num2)
     operator = '='
   }
 }
