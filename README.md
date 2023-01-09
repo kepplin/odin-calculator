@@ -8,7 +8,7 @@ https://kepplin.github.io/odin-calculator/
 
 ## About
 
-This was a project created for [The Odin Project](https://www.theodinproject.com/lessons/foundations-calculator). There were so many bugs which I encountered but most of them should be gone (check the 'Issues' section of this readme for active discovered bugs)
+This was a project created for [The Odin Project](https://www.theodinproject.com/lessons/foundations-calculator). The aim of the project was to apply everything we've learned so far in Javascript (such as dom manipulation, functions, etc), all in one project. There were so many bugs which I encountered but most of them should be gone (check the 'Issues' section of this readme for active discovered bugs)
 
 ## Instructions
 
